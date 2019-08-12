@@ -1,7 +1,7 @@
 // src/templates/BlogPostTemplate.js
 import React from "react"
 import { graphql } from "gatsby"
-// import Img from "gatsby-image"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 const BlogPostTemplate = ({ data }) => (
@@ -14,11 +14,11 @@ const BlogPostTemplate = ({ data }) => (
     <p>
       Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
     </p>
-    {/* <Img
-      sizes={data.wordpressPost.acf.feat_img.localFile.childImageSharp.sizes}
+    <Img
+      fixed={data.wordpressPost.featured_media.localFile.childImageSharp.fixed}
       alt={data.wordpressPost.title}
-      style={{ maxHeight: 450 }}
-    /> */}
+      //   style={{ maxHeight: 450 }}
+    />
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
@@ -37,7 +37,16 @@ export const query = graphql`
         name
       }
       acf {
-        facebook
+        work_name
+      }
+      featured_media {
+        localFile {
+          childImageSharp {
+            fixed(width: 300, height: 300) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
   }

@@ -28,23 +28,12 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`,
       },
     },
-    // {
-    //   resolve: "gatsby-source-wordpress",
-    //   options: {
-    //     baseUrl: "http://localhost:8888/GatsbyWP/",
-    //     protocol: "http",
-    //     hostingWPCOM: false,
-    //     useACF: true,
-    //   },
-    // },
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        // I have created a dummy site for us to use with the plugins we discussed
         baseUrl: "http://localhost:8888/GatsbyWP/",
         protocol: "http",
         hostingWPCOM: false,
-        // We will be using some advanced custom fields
         useACF: true,
         acfOptionPageIds: [],
         verboseOutput: false,
@@ -53,7 +42,6 @@ module.exports = {
           sourceUrl: "http://localhost:8888/GatsbyWP/",
           replacementUrl: "https://localhost:8001",
         },
-        // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [
           "**/categories",
@@ -63,8 +51,8 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-          "**/*/*/menus", // <== Menu api endpoint
-          "**/*/*/menu-locations", // <== Menu api endpoint
+          "**/*/*/menus",
+          "**/*/*/menu-locations",
         ],
         excludedRoutes: [],
         normalizer: function({ entities }) {
