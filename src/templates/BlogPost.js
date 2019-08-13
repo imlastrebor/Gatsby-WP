@@ -17,7 +17,7 @@ const BlogPostTemplate = ({ data }) => (
     <Img
       fixed={data.wordpressPost.featured_media.localFile.childImageSharp.fixed}
       alt={data.wordpressPost.title}
-      //   style={{ maxHeight: 450 }}
+      style={{ maxHeight: 450 }}
     />
     <div
       style={{ marginTop: 20 }}
